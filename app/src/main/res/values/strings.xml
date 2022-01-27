@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SimpleBlogApp</string>
+
+    <string name="splash_text">Welcome to Krafty Blog</string>
+    <string name="post_comment">Post Comment</string>
+    <string name="breaking_news">Breaking News</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="heading">POST HEADING</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="comment">COMMENT</string>
+    <string name="name">NAME</string>
+    <string name="add_comment">Add a comment</string>
+    <string name="read_post">Read Post</string>
+    <string name="user_email">User email</string>
+    <string name="add_post">Add Post</string>
+    <string name="add_post_title">Add Post Title</string>
+    <string name="create_post">Create Post:</string>
+    <string name="add_post_fab_desc">Add post fab</string>
+    <string name="post_body">Post Body</string>
+    <string name="title">Title</string>
+    <string name="comments">Comments:</string>
+    <string name="search">Search...</string>
+
+</resources>
