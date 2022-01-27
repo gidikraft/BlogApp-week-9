@@ -7,13 +7,7 @@ Using the endpoints found here https://jsonplaceholder.typicode.com build a simp
  
  
 
-# Implementation 1: 
 
-Use MVC architecture 
-
- 
- 
-
-# Implementation 2: 
+# Implementation: 
 
 Use MVVM architecture 
