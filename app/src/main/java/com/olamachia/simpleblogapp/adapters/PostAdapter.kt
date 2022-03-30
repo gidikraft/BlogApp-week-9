@@ -38,9 +38,11 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
         val post = differ.currentList[position]
         val heading = holder.itemView.findViewById<TextView>(R.id.heading_tv)
         val body = holder.itemView.findViewById<TextView>(R.id.description_tv)
+        val user = holder.itemView.findViewById<TextView>(R.id.user_id_tv)
         holder.itemView.apply {
             heading.text = post.title
             body.text = post.body
+            user.text = post.userId.toString()
 //            setOnClickListener {
 //                onItemClickListener?.let { it(post) }
 //            }

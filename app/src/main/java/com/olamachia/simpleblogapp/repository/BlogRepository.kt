@@ -12,4 +12,7 @@ class BlogRepository {
     suspend fun getPostComments(id: Int) = RetrofitInstance.api.getPostComments(id)
 
     suspend fun uploadPosts(postItem: PostItem) = RetrofitInstance.api.uploadPosts(postItem)
+
+    suspend fun getPhotos(id: Int) = RetrofitInstance.api.getPhotos(id)
+
 }

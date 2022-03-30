@@ -2,5 +2,6 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/almendra</item>
+        <item>@font/della_respira</item>
     </array>
 </resources>

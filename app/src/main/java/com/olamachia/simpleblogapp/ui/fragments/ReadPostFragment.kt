@@ -1,6 +1,7 @@
 package com.olamachia.simpleblogapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.olamachia.simpleblogapp.adapters.CommentsAdapter
 import com.olamachia.simpleblogapp.databinding.FragmentReadPostBinding
 import com.olamachia.simpleblogapp.model.CommentsItem
 import com.olamachia.simpleblogapp.repository.BlogRepository
-import com.olamachia.simpleblogapp.ui.BlogActivity
+import com.olamachia.simpleblogapp.ui.activities.BlogActivity
 import com.olamachia.simpleblogapp.viewmodel.BlogViewModel
 import com.olamachia.simpleblogapp.viewmodel.BlogViewModelFactoryProvider
 
@@ -38,11 +40,12 @@ class ReadPostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as BlogActivity).viewModel
 
-        binding.blogTitle.text = viewModel.postHeading
-        binding.postBody.text = viewModel.postBody
+        binding.blogTitle.text = viewModel.postHeading[0].uppercase() + viewModel.postHeading.substring(1)
+        binding.postBody.text = viewModel.postBody[0].uppercase() + viewModel.postBody.substring(1)
 
         val commentPostId = viewModel.postId
         viewModel.getPostComments(commentPostId!!)
+        viewModel.getPhotos(commentPostId)
 
         val blogRepository = BlogRepository()
         val viewModelFactory = BlogViewModelFactoryProvider(blogRepository)
@@ -56,6 +59,23 @@ class ReadPostFragment : Fragment() {
                 binding.readPostLayoutRv.layoutManager = LinearLayoutManager(activity)
             } else {
                 Toast.makeText(requireContext(), "Could not get comments", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        viewModel.photosResponse.observe(viewLifecycleOwner, { response ->
+            if (response.isSuccessful) {
+                Log.i("Photos", "${response.body()}")
+                var profilePicture = binding.profilePicture
+                Glide.with(this).load(response.body()?.url).into(profilePicture)
+
+
+//                binding.blogFragmentRv.apply {
+////                    adapter = photosAdapter
+//                    layoutManager = LinearLayoutManager(activity)
+////                    photosAdapter.differ.submitList(response.body())
+//                }
+            } else {
+                Toast.makeText(requireContext(), "Could not get photos", Toast.LENGTH_SHORT).show()
             }
         })
 

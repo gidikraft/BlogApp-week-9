@@ -1,6 +1,7 @@
 package com.olamachia.simpleblogapp.api
 
 import com.olamachia.simpleblogapp.model.CommentsItem
+import com.olamachia.simpleblogapp.model.PhotosItem
 import com.olamachia.simpleblogapp.model.PostItem
 import retrofit2.Response
 import retrofit2.http.Body
@@ -21,4 +22,7 @@ interface BlogAPI {
 
     @POST("/posts")
     suspend fun uploadPosts(@Body postItem: PostItem) : Response<PostItem>
+
+    @GET("/photos/{id}")
+    suspend fun getPhotos(@Path("id")id: Int) : Response<PhotosItem>
 }

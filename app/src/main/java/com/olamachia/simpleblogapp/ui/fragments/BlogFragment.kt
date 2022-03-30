@@ -1,6 +1,7 @@
 package com.olamachia.simpleblogapp.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import com.olamachia.simpleblogapp.R
 import com.olamachia.simpleblogapp.adapters.PostAdapter
 import com.olamachia.simpleblogapp.databinding.FragmentBlogBinding
 import com.olamachia.simpleblogapp.model.PostItem
-import com.olamachia.simpleblogapp.ui.BlogActivity
+import com.olamachia.simpleblogapp.ui.activities.BlogActivity
 import com.olamachia.simpleblogapp.viewmodel.BlogViewModel
 
 class BlogFragment : Fragment() {
@@ -47,6 +48,8 @@ class BlogFragment : Fragment() {
             viewModel.uploadPosts(posts)
             viewModel.addPostItem.observe(viewLifecycleOwner, Observer { response ->
                 if (response.isSuccessful){
+                    Log.d("Response", "${response}and $addPostTitle")
+
                     addPost!!.clear()
                     addPostTitle!!.clear()
                     Snackbar.make(view, "Successfully added post", Snackbar.LENGTH_SHORT).show()
@@ -56,7 +59,7 @@ class BlogFragment : Fragment() {
             })
         }
 
-        viewModel.blogResponse.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.blogResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful){
                 binding.blogFragmentRv.apply {
                     adapter = postAdapter
@@ -91,30 +94,8 @@ class BlogFragment : Fragment() {
                 viewModel.postId = blogPost.id
 
                 replaceFragment(ReadPostFragment())
-//                Snackbar.make(view, "Successfully deleted", Snackbar.LENGTH_LONG).show()
-                }
 
-//            override fun onChildDraw(
-//                c: Canvas,
-//                recyclerView: RecyclerView,
-//                viewHolder: RecyclerView.ViewHolder,
-//                dX: Float,
-//                dY: Float,
-//                actionState: Int,
-//                isCurrentlyActive: Boolean
-//            ) {
-//                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-//                RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-//                    .addBackgroundColor(
-//                        ContextCompat.getColor(
-//                            this@MainActivity,
-//                            R.color.my_background
-//                        )
-//                    )
-//                    .addActionIcon(R.drawable.my_icon)
-//                    .create()
-//                    .decorate()
-//            }
+                }
         }
 
         ItemTouchHelper(itemTouchHelperCallback).apply {

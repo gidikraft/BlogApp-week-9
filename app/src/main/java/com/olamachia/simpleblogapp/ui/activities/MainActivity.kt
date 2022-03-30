@@ -1,4 +1,4 @@
-package com.olamachia.simpleblogapp.ui
+package com.olamachia.simpleblogapp.ui.activities
 
 import android.content.Intent
 import android.os.Build

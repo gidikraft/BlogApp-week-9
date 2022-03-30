@@ -1,4 +1,4 @@
-package com.olamachia.simpleblogapp.ui
+package com.olamachia.simpleblogapp.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

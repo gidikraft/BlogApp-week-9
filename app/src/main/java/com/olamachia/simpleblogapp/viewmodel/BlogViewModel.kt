@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.olamachia.simpleblogapp.model.CommentsItem
+import com.olamachia.simpleblogapp.model.PhotosItem
 import com.olamachia.simpleblogapp.model.PostItem
 import com.olamachia.simpleblogapp.repository.BlogRepository
 import kotlinx.coroutines.launch
@@ -14,6 +15,7 @@ class BlogViewModel(private val blogRepository: BlogRepository) : ViewModel() {
     var eachPostCommentResponse: MutableLiveData<Response<List<CommentsItem>>> = MutableLiveData()
     var addPostItem: MutableLiveData<Response<PostItem>> = MutableLiveData()
     var addCommentResponse: MutableLiveData<Response<CommentsItem>> = MutableLiveData()
+    var photosResponse: MutableLiveData<Response<PhotosItem>> = MutableLiveData()
 
     var postHeading = ""
     var postBody = ""
@@ -21,7 +23,9 @@ class BlogViewModel(private val blogRepository: BlogRepository) : ViewModel() {
 
     init {
         getBlogPost()
+//        getPhotos()
     }
+
     private fun getBlogPost() = viewModelScope.launch {
         val response = blogRepository.getPost()
         blogResponse.value = response
@@ -42,4 +46,8 @@ class BlogViewModel(private val blogRepository: BlogRepository) : ViewModel() {
         addCommentResponse.value = response
     }
 
+    fun getPhotos(id: Int) = viewModelScope.launch {
+        val response = blogRepository.getPhotos(postId!!)
+        photosResponse.value = response
+    }
 }

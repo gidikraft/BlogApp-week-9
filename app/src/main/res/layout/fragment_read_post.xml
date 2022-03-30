@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,10 +8,24 @@
     android:padding="8dp"
     tools:context=".ui.fragments.ReadPostFragment">
 
+    <ImageView
+        android:id="@+id/profile_picture"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:contentDescription="@string/content_description_media"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_profilefaces_24dp"
+        tools:layout_editor_absoluteY="8dp" />
+
     <TextView
         android:id="@+id/blog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/della_respira"
         android:text="@string/title"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -20,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_picture" />
 
     <TextView
         android:id="@+id/post_body"
@@ -87,33 +100,33 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/add_post_TI_container"-->
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="5dp"-->
-<!--        android:layout_marginRight="5dp"-->
-<!--        android:hint="@string/add_post_title"-->
-<!--        app:boxStrokeColor="#4E4A4A"-->
-<!--        app:boxStrokeWidth="1dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/post_content_TI_container"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:shapeAppearanceOverlay="@style/Button4"-->
-<!--        tools:layout_editor_absoluteY="8dp">-->
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/add_post_TI_container"-->
+    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="5dp"-->
+    <!--        android:layout_marginRight="5dp"-->
+    <!--        android:hint="@string/add_post_title"-->
+    <!--        app:boxStrokeColor="#4E4A4A"-->
+    <!--        app:boxStrokeWidth="1dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/post_content_TI_container"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.5"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:shapeAppearanceOverlay="@style/Button4"-->
+    <!--        tools:layout_editor_absoluteY="8dp">-->
 
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/add_post_TI"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:ems="10"-->
-<!--            android:inputType="text|textMultiLine|textPersonName"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="13sp"-->
-<!--            android:textStyle="normal" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:id="@+id/add_post_TI"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:ems="10"-->
+    <!--            android:inputType="text|textMultiLine|textPersonName"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="13sp"-->
+    <!--            android:textStyle="normal" />-->
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/post_comment_TI_container"
@@ -143,20 +156,20 @@
             android:textStyle="normal" />
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <TextView-->
-<!--        android:id="@+id/fab_description_tv"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/create_post"-->
-<!--        android:textAlignment="textEnd"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12sp"-->
-<!--        android:textStyle="normal"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/add_post_TI_container"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/add_comment_fab"-->
-<!--        app:layout_constraintHorizontal_bias="0.967"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.965" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/fab_description_tv"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/create_post"-->
+    <!--        android:textAlignment="textEnd"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="12sp"-->
+    <!--        android:textStyle="normal"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/add_post_TI_container"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/add_comment_fab"-->
+    <!--        app:layout_constraintHorizontal_bias="0.967"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.965" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
